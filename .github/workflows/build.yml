@@ -1,0 +1,17 @@
+name: Build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+      - run: unzip -o DanChoiSmpAnticheat.zip
+      - run: mvn -B -f DanChoiSmpAnticheat/pom.xml package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DanChoiSmpAnticheat
+          path: DanChoiSmpAnticheat/target/DanChoiSmpAnticheat.jar
