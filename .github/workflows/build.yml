@@ -9,7 +9,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 17
-      - run: unzip -o DanChoiSmpAnticheat.zip
+      - run: unzip -o *.zip
       - run: mvn -B -f DanChoiSmpAnticheat/pom.xml package
       - uses: actions/upload-artifact@v4
         with:
